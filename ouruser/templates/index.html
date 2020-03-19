@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웰컴 투 강의평가</title>
+
+    <link rel="stylesheet" href="/static/css/index_style.css" />
+    <link rel="stylesheet" href="/static/css/normalize.css" />
+
+    <!-- 온라인 글꼴 -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo"><a href="{% url 'index' %}" class="logo"><img class="image001" src="/static/image/school.svg" alt="" />
+        </h1>
+        <nav class="nav">
+          <ul class="list">
+            <li class="list-item"><a href="{% url 'index'%}">홈</a></li>
+            <li class="list-item"><a href="{% url 'login'%}">로그인</a></li>
+            <li class="list-item">
+              <a href="{% url 'register'%}">회원가입</a>
+            </li>
+            <!-- 강의평가 하이퍼링크 등록 요망 -->
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="main">
+      <div class="main-section">
+        <div class="container">
+          <p class="intro-desc">
+            강의평가를 통해 여러분의 대학생활을 공유해 주세요!
+          </p>
+          <a href="{% url 'login'%}" class="cta">강의평가 시작하기</a>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <ul class="footer-list">
+        <a href="#">이용약관</a>
+      </ul>
+      <ul class="footer-list">
+        <a href="#">개인정보처리방침</a>
+      </ul>
+      <ul class="footer-list">
+        <a href="#">문의하기</a>
+      </ul>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+{%extends 'base.html'%} {% block contents %}
+<!DOCTYPE html>
+<html lang="ko">
+  <div class="container1">
+    <h1>강의평가 등록</h1>
+    <br />
+    <div class="form_control">
+      <form method="POST">
+        {% csrf_token %}
+        <input
+          type="text"
+          class="title-control"
+          id="title"
+          placeholder="과목명을 기입해 주세요"
+          name="title"
+        />
+        <br />
+        <textarea
+          id="body"
+          class="body-control"
+          placeholder="이 강의에 대한 총평을 작성해주세요."
+          name="body"
+        ></textarea>
+        <br />
+        <input class="submit" type="submit" value="등록" />
+      </form>
+    </div>
+  </div>
+  <style>
+    h1 {
+      text-align: center;
+      margin: 50px auto 20px;
+      font-family: inherit;
+      font-weight: 500;
+      line-height: 1.5;
+      color: inherit;
+      display: block;
+    }
+
+    .container1 {
+      border-bottom: 1px solid #cfe3dc;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .title-control {
+      margin: 0px auto 10px;
+      display: block;
+      border: 1px solid #d14413;
+      width: 75%;
+      height: 30px;
+      border-radius: 20px;
+      background-color: #f7f7f7;
+      border: solid 1px #d8d8d8;
+      padding: 28px 23.68421px;
+      color: #000000;
+      resize: none;
+      outline: none;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    textarea {
+      margin: 0px auto 0px;
+      display: block;
+      border: 1px solid #d14413;
+      width: 75%;
+      height: 200px;
+      border-radius: 20px;
+      background-color: #f7f7f7;
+      border: solid 1px #d8d8d8;
+      padding: 28px 23.68421px;
+      color: #000000;
+      resize: none;
+      outline: none;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    .submit {
+      margin: 0px auto 30px;
+      color: white;
+      height: 60px;
+      font-weight: 600;
+      display: block;
+      padding: 20px 50px;
+      border-radius: 8px;
+      background: rgb(255, 60, 60);
+    }
+
+    .submit:hover {
+      background: rgb(255, 126, 126);
+    }
+  </style>
+
+  {% endblock %}
+</html>

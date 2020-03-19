@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웰컴 투 강의평가</title>
+    
+    <link rel="stylesheet" href="/static/css/register_style.css" />
+    <link rel="stylesheet" href="/static/css/normalize.css" />
+    <!-- 온라인 글꼴 -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo"><a href="{% url 'index' %}" class="logo">
+          <img class="image001" src="/static/image/school.svg" alt="" />
+        </h1>
+        <nav class="nav">
+          <ul class="list">
+            <li class="list-item"><a href="{% url 'index'%}">홈</a></li>
+            <li class="list-item"><a href="{% url 'login'%}">로그인</a></li>
+            <li class="list-item"><a href="{% url 'register'%}">회원가입</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="main">
+      <div class="main-section">
+        <div class="container-center">
+          <div class="intro-desc">
+              <h1>강의평가 회원가입</h1>
+              <h5>{{ error }}</h5>
+        </div>
+        <div class="intro-desc">
+          <div class="form">
+              <form method="post" action=".">
+                {% csrf_token %}   
+                  <div class="form-group">
+                    <label class="form-label" for="username">아이디</label>
+                    <input type="text" class="form-control" id="username" placeholder="사용자 이름" name ="username">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="password">비밀번호</label>
+                    <input type="password" class="form-control" id="password" placeholder="비밀번호" name = 'password'>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="re-password">비밀번호 확인</label>
+                    <input type="password" class="form-control" id="re-password" placeholder="비밀번호 확인" name = "re-password">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="useremail">이메일</label>
+                    <input type="email" class="form-control" id="useremail" placeholder="유저 이메일" name ="useremail">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="userschool">소속 대학</label>
+                    <input type="text" class="form-control" id="userschool" placeholder="소속 대학" name ="userschool">
+                  </div>
+                  <button class ='cta' type="submit">회 원 가 입</button>
+                </form>   
+          </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <ul class="footer-list">
+        <a href="#">이용약관</a>
+      </ul>
+      <ul class="footer-list">
+        <a href="#">개인정보처리방침</a>
+      </ul>
+      <ul class="footer-list">
+        <a href="#">문의하기</a>
+      </ul>
+    </footer>
+  </body>
+</html>

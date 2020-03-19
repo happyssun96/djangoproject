@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웰컴 투 강의평가</title>
+    <link rel="stylesheet" href="/static/css/index_style.css" />
+    <link rel="stylesheet" href="/static/css/normalize.css" />
+    <!-- 온라인 글꼴 -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+          <h1 class="logo">
+            <a href="{% url 'index' %}" class="logo"><img class="image001" src="/static/image/school.svg" alt="" />
+          </h1>
+          <nav class="nav">
+            <ul class="list">
+              <li class="list-item"><a href="{% url 'index' %}">홈</a></li>
+              <li class="list-item"><a href="{% url 'newblog' %}">글쓰기</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+<br>
+    <!-- 블로그 글을 띄우는 부분-->
+    {% for blog in posts %}
+
+<div class="container">   
+    <div class="card" >
+    <div class="card-body">
+      <h2 class="card-title"> {{blog.title}} </h2>
+      <h5 class="card-subtitle mb-2 text-muted"> {{blog.pub_date}} </h5> <br>
+      <p class="card-text"> {{blog.summary}} </p>
+      <a href="{% url 'detail' blog.id%}" class="card-link">...more</a>
+      <br>
+      <a href="{% url 'update' blog.id %}" class="btn btn-primary"> 수정 </a>
+      <a href="{% url 'delete' blog.id %}"class="btn btn-secondary"> 삭제 </a>
+      <br>
+    </div>
+    </div>
+  </div> <br>
+
+  {% endfor %}
+
+  {% if posts.has_other_pages %}
+  <ul class="pagination">
+    {% if posts.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{ posts.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="page-link"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in posts.paginator.page_range %}
+      {% if posts.number == i %}
+        <li class="page-item active" aria-current="page"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if posts.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ posts.next_page_number }}">&raquo;</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{posts.paginator.num_pages}}">Last</a></li>
+    {% else %}
+      <li class="page-link"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+ 
+</body>
+</html>
